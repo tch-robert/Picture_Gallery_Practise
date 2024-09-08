@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+/**
+ * ** 擔任所有component的容器
+ */
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Page from "./pages/Page";
+import NoPage from "./pages/NoPage";
+import Layout from "./Layout";
+
+import "./styles/style.css";
 
 function App() {
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />}></Route>
+          <Route path="page" element={<Page />}></Route>
+          <Route path="*" element={<NoPage />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
